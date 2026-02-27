@@ -54,23 +54,45 @@ The project uses the following main tables:
 
 ### `job_postings_fact`
 Contains job-level data:
-- Job title  
-- Salary  
-- Location  
-- Work type  
-- Degree requirements  
-- Company ID  
+- `job_id`
+- `job_title_short`
+- `job_location`
+- `job_schedule_type`
+- `job_work_from_home`
+- `job_posted_date`
+- `salary_year_avg`
+- `salary_hour_avg`
+- `job_no_degree_mention`
+- `company_id`
+
+---
 
 ### `skills_dim`
 Contains skill metadata:
-- `skill_id`  
-- `skills`  
-- `type`  
+- `skill_id`
+- `skills`
+- `type`
+
+---
 
 ### `skills_job_dim`
 Bridge table connecting:
-- Jobs ↔ Skills (Many-to-many relationship)
+- `job_id`
+- `skill_id`
 
+This table represents a many-to-many relationship between jobs and skills.
+
+---
+
+### `company_dim`
+Contains company-level information:
+- `company_id`
+- `name`
+- `link`
+- `link_google`
+- `thumbnail`
+
+This table allows job postings to be linked to company details such as company name and related URLs.
 ---
 
 # 🔎 The Analysis  
